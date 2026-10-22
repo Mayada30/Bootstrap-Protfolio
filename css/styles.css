@@ -1,0 +1,83 @@
+/* ==========================================================
+   Custom styles (loaded AFTER Bootstrap, so these override it)
+   ========================================================== */
+
+/* 1. Brand colors - change these to re-theme the whole site */
+:root {
+  --bs-primary: #1e30f3;
+  --bs-primary-rgb: 30, 48, 243;
+  --bs-secondary: #e21e80;
+  --bs-secondary-rgb: 226, 30, 128;
+  --bs-body-font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bs-link-color: #1e30f3;
+  --bs-link-hover-color: #1826c2;
+}
+
+html, body { height: 100%; }
+body { font-family: var(--bs-body-font-family); }
+
+/* 2. Bootstrap's buttons ignore the variables above, so restyle them */
+.btn-primary {
+  --bs-btn-bg: #1e30f3;           --bs-btn-border-color: #1e30f3;
+  --bs-btn-hover-bg: #1a29cf;     --bs-btn-hover-border-color: #1826c2;
+  --bs-btn-active-bg: #1826c2;    --bs-btn-active-border-color: #1724b6;
+  --bs-btn-disabled-bg: #1e30f3;  --bs-btn-disabled-border-color: #1e30f3;
+}
+
+/* 3. Gradient helpers */
+.bg-gradient-primary-to-secondary {
+  background: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
+}
+.text-gradient {
+  background: linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 4. Rounded corners + icon square */
+.rounded-4 { border-radius: 1rem !important; }
+.feature {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 3rem; width: 3rem; font-size: 1.5rem;
+}
+
+/* 5. Hero profile block (photo + decorative dots) */
+.profile {
+  position: relative;
+  height: 75vw; width: 75vw;
+  max-height: 40rem; max-width: 40rem;
+  margin-top: 5vw;
+  border-radius: 5vw;
+}
+.profile .profile-img {
+  position: absolute; bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  height: 80vw; max-height: 45rem;
+}
+/* Decorative dot grids (pure CSS, no SVG needed) */
+.profile .dots {
+  position: absolute; width: 4rem; height: 14rem;
+  background-image: radial-gradient(currentColor 3px, transparent 3.5px);
+  background-size: 1.1rem 1.1rem;
+  pointer-events: none;
+}
+.profile .dots-1 { right: 1rem;  top: 1rem;    color: #fff; }
+.profile .dots-2 { right: -2rem; top: 2rem;    color: #1e30f3; }
+.profile .dots-3 { left: 1rem;   bottom: 2rem; color: #fff; }
+.profile .dots-4 { left: -2rem;  bottom: 1rem; color: #1e30f3; }
+
+@media (min-width: 576px) { .profile { height: 60vw; width: 60vw; } .profile .profile-img { height: 65vw; } }
+@media (min-width: 768px) { .profile { height: 50vw; width: 50vw; } .profile .profile-img { height: 55vw; } }
+@media (min-width: 992px) { .profile { height: 40vw; width: 40vw; } .profile .profile-img { height: 45vw; } }
+@media (min-width: 1200px){ .profile { height: 35vw; width: 35vw; } .profile .profile-img { height: 40vw; } }
+
+/* 6. Project card images */
+.project-img { width: 300px; max-width: 40%; object-fit: cover; align-self: stretch; }
+@media (max-width: 767.98px) {
+  .project-card .d-flex { flex-direction: column-reverse; }
+  .project-img { width: 100%; max-width: 100%; height: 14rem; }
+}
+
+/* 7. Accessibility: visible keyboard focus */
+a:focus-visible, button:focus-visible { outline: 3px solid rgba(30,48,243,.5); outline-offset: 2px; }
